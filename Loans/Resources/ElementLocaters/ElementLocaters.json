@@ -39,5 +39,8 @@
     "Save": "//button[@id='btnsavelanddetails']",
     "SavePopup": "(//div[@class='modal-body'])[11]",
     "OkButton": "//button[@id='btnsuccessmessageok']"
+  },
+  "CreditLimitPage": {
+
   }
 }

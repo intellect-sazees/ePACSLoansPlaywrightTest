@@ -52,7 +52,7 @@ namespace ePACSLoans.Modules.Loans
         public async Task DeclareLandDetailswithMandatoryfieldsAsync(DashboardPage dashboardPage,LandDeclarationData data)
         {
             await NavigateToLandDeclarationAsync(dashboardPage);
-            await _formComponent.FillAsync(new Tuple<LandDeclarationData, LandDeclarationLocaters>(data, _locators));
+            await _formComponent.FillAsync(data, _locators);
             var modalBody = Page.Locator(_locators.Savepopup);
             await modalBody.WaitForAsync(new LocatorWaitForOptions{State = WaitForSelectorState.Visible,Timeout = 10000});
             string actualMessage = (await modalBody.InnerTextAsync()).Trim();

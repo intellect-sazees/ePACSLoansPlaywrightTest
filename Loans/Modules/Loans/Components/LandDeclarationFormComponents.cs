@@ -9,10 +9,12 @@ using System.Threading.Tasks;
 using ePACSLoans.Utilities.Helpers;
 using ePACSLoans.Models.Locaters;
 using ePACSLoans.Models.Data;
+using ePACSLoans.Models;
+using ePACSLoans.Models.Data;
 
 namespace ePACSLoans.Modules.Loans.Components
 {
-    public class LandDeclarationFormComponents : BaseFormComponent
+    public class LandDeclarationFormComponents : BaseFormComponent<LandDeclarationData, LandDeclarationLocaters>
     {
         private IPage page;
         private IWaitHelper waitHelper;
@@ -25,10 +27,8 @@ namespace ePACSLoans.Modules.Loans.Components
             _inputHelper = inputHelper ?? throw new ArgumentNullException(nameof(inputHelper));
             _locators = locators ?? throw new ArgumentNullException(nameof(locators));
         }
-        public override async Task FillAsync(Tuple<LandDeclarationData, LandDeclarationLocaters> tupledata)
+        public override async Task FillAsync(LandDeclarationData landDeclarationData, LandDeclarationLocaters datalocater)
         {
-            var landDeclarationData = tupledata.Item1;
-            var datalocater = tupledata.Item2;
             try
             {
                 Logger.Info("Starting to fill Land Declaration form");
@@ -49,7 +49,7 @@ namespace ePACSLoans.Modules.Loans.Components
             }
             catch (Exception ex)
             {
-                Logger.Error("Failed to fill Land DeclarationData form", ex);
+                Logger.Error($"Failed to fill Land DeclarationData form :{ex}");
                 throw;
             }
         }

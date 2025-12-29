@@ -11,7 +11,7 @@ namespace ePACSLoans.Core.Components
     /// Base class for all form components
     /// Provides common functionality for form interactions
     /// </summary>
-    public abstract class BaseFormComponent
+    public abstract class BaseFormComponent<TData, TLocators>
     {
         protected IPage Page { get; }
         protected IWaitHelper WaitHelper { get; }
@@ -37,7 +37,10 @@ namespace ePACSLoans.Core.Components
         /// Must be implemented by derived components
         /// </summary>
         /// <param name="data">Data object containing form field values</param>
-        public abstract Task FillAsync(Tuple<LandDeclarationData, LandDeclarationLocaters> data)  ;
+        //public abstract Task FillAsync(Tuple<LandDeclarTationData, LandDeclarationLocaters> data)  ;
+        public abstract Task FillAsync(TData data, TLocators locators);
+
+
         /// <summary>
         /// Validates that the form is filled correctly
         /// Optional - can be overridden by derived components
