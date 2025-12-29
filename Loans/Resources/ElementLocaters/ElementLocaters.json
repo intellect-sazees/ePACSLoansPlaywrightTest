@@ -36,6 +36,8 @@
     "LandDeclaredAcres": "//input[@id='Item1_LandDeclaredAcres']",
     "LandDeclaredCents": "//input[@id='Item1_LandDeclaredOU']",
     "LandValuePerAcre": "//input[@id='Item1_LandValuePerAcre']",
-    "Save": "//button[@id='btnsavelanddetails']"
+    "Save": "//button[@id='btnsavelanddetails']",
+    "SavePopup": "(//div[@class='modal-body'])[11]",
+    "OkButton": "//button[@id='btnsuccessmessageok']"
   }
 }

@@ -28,10 +28,6 @@ namespace ePACSLoans.Modules.Loans.Components
         {
             var landDeclarationData = tupledata.Item1;
             var datalocater = tupledata.Item2;
-            //if (data is not LandDeclarationData landDeclarationData)
-            //{
-            //    //throw new ArgumentException($"Expected LandDeclarationData, got {typeof(T).Name}", nameof(data));
-            //}
             try
             {
                 Logger.Info("Starting to fill Land Declaration form");
@@ -46,19 +42,8 @@ namespace ePACSLoans.Modules.Loans.Components
                 var AvalCents=await GetAvailableLandCentsAsync(datalocater);
                 await FillDeclaredLandInAcersAsync(AvalAcers);
                 await FillDeclaredLandInCentsAsync(AvalCents);
-                //await FillSocietyLoanNoAsync(accountData.SocietyLoanNo);
-                //await FillAppliedDateAsync(accountData.AppliedDate);
-                //await FillAppliedAmountAsync(accountData.AppliedAmount);
-                //await FillSanctionDateAsync(accountData.SanctionDate);
-                //await FillSanctionAmountAsync(accountData.SanctionAmount);
-                //await FillRepaymentTypeAsync(accountData.RepaymentType);
-                //await FillRepaymentModeAsync(accountData.RepaymentMode);
-                //await FillROIAsync(accountData.ROI);
-                //await FillPenalROIAsync(accountData.PenalROI);
-                //await FillIOAROIAsync(accountData.IOAROI);
-                //await FillGestationPeriodMonthsAsync(accountData.GestationPeriodMonths);
-                //await FillLoanPeriodMonthsAsync(accountData.LoanPeriodMonths);
-
+                await FillLandValuePerAcerAsync(landDeclarationData.LandValuePerAcer);
+                await ClickSaveAsync();
                 Logger.Info("Land DeclarationData form filled successfully");
             }
             catch (Exception ex)
@@ -136,6 +121,20 @@ namespace ePACSLoans.Modules.Loans.Components
                 throw new InvalidOperationException($"Failed to fill Land in cents: {diclandincents}");
             }
             Logger.Debug($"Failed to fill Land in cents:{diclandincents}");
+        }
+        private async Task FillLandValuePerAcerAsync(string landvalueperacer)
+        {
+            var input = Page.Locator(_locators.LandValuePerAcreInput);
+            var filled = await _inputHelper.FillTextBoxValueAsync(input, landvalueperacer);
+            if (!filled)
+            {
+                throw new InvalidOperationException($"Failed to fill Landvalueperacer: {landvalueperacer}");
+            }
+            Logger.Debug($"Filled landvalue per acer: {landvalueperacer}");
+        }
+        private async Task ClickSaveAsync()
+        {
+            await Page.Locator(_locators.SaveBtn).ClickAsync();
         }
     }
 }

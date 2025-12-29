@@ -10,6 +10,7 @@
     "Product": "Normal KCC",
     "Crop": "Sugar Cane Plant",
     "Village": "1",
-    "SurveyNo": "1"
+    "SurveyNo": "1",
+    "LandvaluePerAcer": "100000"
   }
 }

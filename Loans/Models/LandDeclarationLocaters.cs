@@ -26,5 +26,7 @@ namespace ePACSLoans.Models
         public string LandDeclaredCentsInput { get; set; } = string.Empty;
         public string LandValuePerAcreInput { get; set; } = string.Empty;
         public string SaveBtn { get; set; } = string.Empty;
+        public string Savepopup {  get; set; } = string.Empty;
+        public string Okbtn { get; set; } = string.Empty;
     }
 }

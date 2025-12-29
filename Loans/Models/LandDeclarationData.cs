@@ -14,5 +14,6 @@ namespace ePACSLoans.Models
         public string Crop {  get; set; } = string.Empty;
         public string Village { get; set; } = string.Empty;
         public string SurveyNo {  get; set; } = string.Empty;
+        public string LandValuePerAcer {  get; set; } = string.Empty; 
     }
 }

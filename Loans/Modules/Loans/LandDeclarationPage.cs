@@ -4,6 +4,8 @@ using ePACSLoans.Core;
 using ePACSLoans.Core.Interfaces;
 using ePACSLoans.Modules.Dashboard;
 using Microsoft.Playwright;
+using Tesseract;
+using ePACSLoans.Utilities.Helpers;
 
 namespace ePACSLoans.Modules.Loans
 {
@@ -37,11 +39,13 @@ namespace ePACSLoans.Modules.Loans
                 nameof(LandDeclarationLocaters.CultivatableLandInAcersInput)=> "CultivatableLandInAcers",
                 nameof(LandDeclarationLocaters.CultivatableLandInCentsInput)=> "CultivatableLandInCents",
                 nameof(LandDeclarationLocaters.TotalAvailableLandInAcersInput)=> "TotalAvailableLandInAcers",
-                nameof(LandDeclarationLocaters.TotalAvailableLandInCentsInput)=> "TotalAvailableLandInAcers",
+                nameof(LandDeclarationLocaters.TotalAvailableLandInCentsInput)=> "TotalAvailableLandInCents",
                 nameof(LandDeclarationLocaters.LandDeclaredAcresInput)=> "LandDeclaredAcres",
                 nameof(LandDeclarationLocaters.LandDeclaredCentsInput)=> "LandDeclaredCents",
                 nameof(LandDeclarationLocaters.LandValuePerAcreInput)=> "LandValuePerAcre",
                 nameof(LandDeclarationLocaters.SaveBtn)=> "Save",
+                nameof(LandDeclarationLocaters.Savepopup)=> "SavePopup",
+                nameof(LandDeclarationLocaters.Okbtn)=> "OkButton",
                 _ => propertyName // Default: use property name as-is
             };
         }
@@ -49,6 +53,12 @@ namespace ePACSLoans.Modules.Loans
         {
             await NavigateToLandDeclarationAsync(dashboardPage);
             await _formComponent.FillAsync(new Tuple<LandDeclarationData, LandDeclarationLocaters>(data, _locators));
+            var modalBody = Page.Locator(_locators.Savepopup);
+            await modalBody.WaitForAsync(new LocatorWaitForOptions{State = WaitForSelectorState.Visible,Timeout = 10000});
+            string actualMessage = (await modalBody.InnerTextAsync()).Trim();
+            AssertHelper.AssertTextContains(actualMessage,"Data saved successfully","Success Popup Message");
+            await Page.Locator(_locators.Okbtn).ClickAsync();
+            await dashboardPage.NavigateToDashboardAsync();
         }
         private async Task NavigateToLandDeclarationAsync(DashboardPage dashboardPage)
         {

@@ -94,8 +94,7 @@ namespace ePACSLoans.Tests.SmokeTest
                     Crop=get("Crop"),
                     Village=get("Village"),
                     SurveyNo=get("SurveyNo"),
-                    //DrawalAmount = get("DrawalAmount"),
-                    //VoucherType = get("VoucherType"),
+                    LandValuePerAcer = get("LandvaluePerAcer"),
                 };
                 return obj;
             }
