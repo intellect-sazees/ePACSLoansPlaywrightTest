@@ -4,15 +4,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ePACSLoans.Models
+namespace ePACSLoans.Models.Locaters
 {
     public class LandDeclarationLocaters
     {
-        public string LandDeclarationIcon {  get; set; }=string.Empty;
+        public string LandDeclarationIcon { get; set; } = string.Empty;
         public string AdmissionNoInput { get; set; } = string.Empty;
-        public string Searchbtn {  get; set; } = string.Empty;
+        public string Searchbtn { get; set; } = string.Empty;
         public string AddBtn { get; set; } = string.Empty;
-        public string ProductInput { get; set; } = string.Empty;   
+        public string ProductInput { get; set; } = string.Empty;
         public string CropInput { get; set; } = string.Empty;
         public string VillageInput { get; set; } = string.Empty;
         public string SurveyNoInput { get; set; } = string.Empty;
@@ -26,7 +26,7 @@ namespace ePACSLoans.Models
         public string LandDeclaredCentsInput { get; set; } = string.Empty;
         public string LandValuePerAcreInput { get; set; } = string.Empty;
         public string SaveBtn { get; set; } = string.Empty;
-        public string Savepopup {  get; set; } = string.Empty;
+        public string Savepopup { get; set; } = string.Empty;
         public string Okbtn { get; set; } = string.Empty;
     }
 }

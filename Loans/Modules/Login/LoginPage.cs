@@ -1,6 +1,6 @@
 ﻿using ePACSLoans.Core;
 using ePACSLoans.Core.Interfaces;
-using ePACSLoans.Models;
+using ePACSLoans.Models.Locaters;
 using ePACSLoans.Utilities.DataManagement;
 using ePACSLoans.Utilities.Helpers;
 using Microsoft.Playwright;

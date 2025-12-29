@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ePACSLoans.Models
+namespace ePACSLoans.Models.Locaters
 {
     /// <summary>
     /// Locators for Login page elements

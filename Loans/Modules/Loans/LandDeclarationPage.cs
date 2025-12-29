@@ -1,11 +1,11 @@
-﻿using ePACSLoans.Models;
-using ePACSLoans.Modules.Loans.Components;
+﻿using ePACSLoans.Modules.Loans.Components;
 using ePACSLoans.Core;
 using ePACSLoans.Core.Interfaces;
 using ePACSLoans.Modules.Dashboard;
 using Microsoft.Playwright;
-using Tesseract;
 using ePACSLoans.Utilities.Helpers;
+using ePACSLoans.Models.Locaters;
+using ePACSLoans.Models.Data;
 
 namespace ePACSLoans.Modules.Loans
 {

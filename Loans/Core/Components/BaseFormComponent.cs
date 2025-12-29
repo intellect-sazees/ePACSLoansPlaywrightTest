@@ -1,5 +1,6 @@
 using ePACSLoans.Core.Interfaces;
-using ePACSLoans.Models;
+using ePACSLoans.Models.Data;
+using ePACSLoans.Models.Locaters;
 using Microsoft.Playwright;
 using NLog;
 using System.Runtime.CompilerServices;

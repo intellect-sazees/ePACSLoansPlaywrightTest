@@ -1,5 +1,4 @@
-﻿using ePACSLoans.Models;
-using ePACSLoans.Core.Components;
+﻿using ePACSLoans.Core.Components;
 using ePACSLoans.Core.Interfaces;
 using Microsoft.Playwright;
 using System;
@@ -8,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ePACSLoans.Utilities.Helpers;
+using ePACSLoans.Models.Locaters;
+using ePACSLoans.Models.Data;
 
 namespace ePACSLoans.Modules.Loans.Components
 {

@@ -1,5 +1,4 @@
 ﻿using Allure.NUnit;
-using ePACSLoans.Models;
 using ePACSLoans.Modules.Loans;
 using ePACSLoans.Core;
 using ePACSLoans.Modules.Dashboard;
@@ -9,6 +8,7 @@ using ePACSLoans.Utilities.DataManagement;
 using ePACSLoans.Utilities.Helpers;
 using ePACSLoans.Utilities.LocatorManagement;
 using NLog;
+using ePACSLoans.Models.Data;
 
 namespace ePACSLoans.Tests.SmokeTest
 {

@@ -3,7 +3,7 @@ using ePACSLoans.Core.Interfaces;
 using ePACSLoans.Utilities.DataManagement;
 using ePACSLoans.Utilities.Helpers;
 using Microsoft.Playwright;
-using ePACSLoans.Models;
+using ePACSLoans.Models.Locaters;
 
 namespace ePACSLoans.Modules.Dashboard
 {
