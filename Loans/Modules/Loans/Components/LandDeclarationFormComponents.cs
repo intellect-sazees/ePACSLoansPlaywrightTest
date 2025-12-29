@@ -1,0 +1,114 @@
+﻿using ePACSLoans.Models;
+using ePACSLoans.Core.Components;
+using ePACSLoans.Core.Interfaces;
+using Microsoft.Playwright;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using ePACSLoans.Utilities.Helpers;
+
+namespace ePACSLoans.Modules.Loans.Components
+{
+    public class LandDeclarationFormComponents : BaseFormComponent
+    {
+        private IPage page;
+        private IWaitHelper waitHelper;
+        private NLog.ILogger logger;
+        private IRetryHelper retryHelper;
+        private IInputValidationHelper _inputHelper;
+        private LandDeclarationLocaters _locators;
+        public LandDeclarationFormComponents(IPage page, IWaitHelper waitHelper, NLog.ILogger logger, IRetryHelper retryHelper, IInputValidationHelper inputHelper, LandDeclarationLocaters locators) : base(page, waitHelper, logger, retryHelper)
+        {
+            _inputHelper = inputHelper ?? throw new ArgumentNullException(nameof(inputHelper));
+            _locators = locators ?? throw new ArgumentNullException(nameof(locators));
+        }
+        public override async Task FillAsync(Tuple<LandDeclarationData, LandDeclarationLocaters> tupledata)
+        {
+            var landDeclarationData = tupledata.Item1;
+            var datalocater = tupledata.Item2;
+            //if (data is not LandDeclarationData landDeclarationData)
+            //{
+            //    //throw new ArgumentException($"Expected LandDeclarationData, got {typeof(T).Name}", nameof(data));
+            //}
+            try
+            {
+                Logger.Info("Starting to fill Land Declaration form");
+                await FillAdmissionNoAsync(landDeclarationData.AdmissionNo);
+                await ClickSearchBtn();
+                await ClickAddAsync();
+                await FillProductAsync(landDeclarationData.Product);
+                await FillCropAsync(landDeclarationData.Crop);
+                await FillVillageAsync(landDeclarationData.Village);
+                await FillSurveyNoAsync(landDeclarationData.SurveyNo);
+                await GetAvailableLandAcersAsync(datalocater);
+                //await FillSocietyLoanNoAsync(accountData.SocietyLoanNo);
+                //await FillAppliedDateAsync(accountData.AppliedDate);
+                //await FillAppliedAmountAsync(accountData.AppliedAmount);
+                //await FillSanctionDateAsync(accountData.SanctionDate);
+                //await FillSanctionAmountAsync(accountData.SanctionAmount);
+                //await FillRepaymentTypeAsync(accountData.RepaymentType);
+                //await FillRepaymentModeAsync(accountData.RepaymentMode);
+                //await FillROIAsync(accountData.ROI);
+                //await FillPenalROIAsync(accountData.PenalROI);
+                //await FillIOAROIAsync(accountData.IOAROI);
+                //await FillGestationPeriodMonthsAsync(accountData.GestationPeriodMonths);
+                //await FillLoanPeriodMonthsAsync(accountData.LoanPeriodMonths);
+
+                Logger.Info("Land DeclarationData form filled successfully");
+            }
+            catch (Exception ex)
+            {
+                Logger.Error("Failed to fill Land DeclarationData form", ex);
+                throw;
+            }
+        }
+        private async Task FillAdmissionNoAsync(string admissionNo)
+        {
+            var input = Page.Locator(_locators.AdmissionNoInput);
+            var filled = await _inputHelper.FillTextBoxValueAsync(input, admissionNo);
+            if (!filled)
+            {
+                throw new InvalidOperationException($"Failed to fill Admission No: {admissionNo}");
+            }
+            Logger.Debug($"Filled Admission No: {admissionNo}");
+        }
+        private async Task ClickSearchBtn()
+        {
+            await Page.ClickAsync(_locators.Searchbtn);
+        }
+        private async Task ClickAddAsync()
+        {
+            await Page.ClickAsync(_locators.AddBtn);
+        }
+        private async Task FillProductAsync(string product)
+        {
+            await _inputHelper.SelectDropdownOptionAsync(Page.Locator(_locators.ProductInput), product, SelectBy.Label);
+            Logger.Debug($"Selected product: {product}");
+        }
+        private async Task FillCropAsync(string crop)
+        {
+            await _inputHelper.SelectDropdownOptionAsync(Page.Locator(_locators.CropInput), crop, SelectBy.Label);
+            Logger.Debug($"Selected Crop: {crop}");
+        }
+        private async Task FillVillageAsync(string village)
+        {
+            await _inputHelper.SelectDropdownOptionAsync(Page.Locator(_locators.VillageInput), village, SelectBy.Index);
+            Logger.Debug($"Selected Village: {village}");
+        }
+        private async Task FillSurveyNoAsync(string surveyno)
+        {
+            await _inputHelper.SelectDropdownOptionAsync(Page.Locator(_locators.SurveyNoInput), surveyno, SelectBy.Index);
+            Logger.Debug($"Survey no: {surveyno}");
+        }
+        private async Task<string> GetAvailableLandAcersAsync(LandDeclarationLocaters landDeclarationLocaters)
+        {
+            string value;
+            var a = Page.Locator(landDeclarationLocaters.TotalAvailableLandInAcersInput);
+            value = await _inputHelper.GetValueinTextBoxAsync(a);
+            return value;
+        }
+    }
+}
+

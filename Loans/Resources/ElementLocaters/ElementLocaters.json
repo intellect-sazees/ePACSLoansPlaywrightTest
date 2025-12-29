@@ -1,0 +1,41 @@
+{
+  "LoginPage": {
+    "Usernameinput": "//input[@id='UserName']",
+    "PasswordInput": "(//input[@id='Password'])[1]",
+    "DateInput": "//input[@id='LoginDataTime']",
+    "captchaLabel": "//img[@id='imgcapt']",
+    "captchaInput": "//input[@id='ValidateCaptcha']",
+    "loginButton": "//button[@id='btnView ']",
+    "invalidCaptchaLable": "//span[text()=' Enter Valid Captcha']",
+    "signoutMenu": "(//a[@class='dropdown-toggle'])[2]",
+    "signout": "(//a[@class='dropdown-toggle'])[2]/span"
+  },
+  "DashboardPage": {
+    "pacsInfoConfigAllert": "//div[@class='sweet-alert wide-swal showSweetAlert visible']",
+    "okButton": "//button[@class='confirm']",
+    "nabardLogo": "//div[@class='logo-con']",
+    "borrowingsIcon": "//a[@id='20']",
+    "membershipIcon": "//a[@id='1']",
+    "loansIcon": "//a[@id='3']"
+  },
+  "LandDeclarationPage": {
+    "LandDeclarationIcon": "//li[@class='wf-40087']",
+    "AdmissionNo": "//input[@id='Admissionno']",
+    "iconsearch": "//i[@id='iconsearch']",
+    "AddLandDetails": "//a[@id='btnaddlanddetails']",
+    "Product": "//select[@id='ProductID']",
+    "Crop": "//select[@id='CropId']",
+    "Village": "//select[@id='ddlvillagename']",
+    "SurveyNo": "//select[@id='Item1_SurveyNo']",
+    "TotalLandInAcers": "//input[@id='Item1_TotalLandInAcres']",
+    "TotalLandInCents": "//input[@id='Item1_TotalLandInUnites']",
+    "CultivatableLandInAcers": "//input[@id='Item1_CultivationInAcres']",
+    "CultivatableLandInCents": "//input[@id='Item1_CultivationInUnites']",
+    "TotalAvailableLandInAcers": "//input[@id='txtremaininglandacres']",
+    "TotalAvailableLandInCents": "//input[@id='txtremaininglandunits']",
+    "LandDeclaredAcres": "//input[@id='Item1_LandDeclaredAcres']",
+    "LandDeclaredCents": "//input[@id='Item1_LandDeclaredOU']",
+    "LandValuePerAcre": "//input[@id='Item1_LandValuePerAcre']",
+    "Save": "//button[@id='btnsavelanddetails']"
+  }
+}

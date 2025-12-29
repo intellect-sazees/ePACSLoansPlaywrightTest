@@ -1,0 +1,10 @@
+{
+  "LoginTestData": {
+    "Url": "${LOGIN_URL}",
+    "Username": "${LOGIN_USERNAME}",
+    "Password": "${LOGIN_PASSWORD}",
+    "LoginDate": "01-04-2025"
+  }
+}
+
+  

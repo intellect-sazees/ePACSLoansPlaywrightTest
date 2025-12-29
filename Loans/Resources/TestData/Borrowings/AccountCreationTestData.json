@@ -1,0 +1,19 @@
+{
+  "AccountCreationTestData": {
+    "Product": "Borrowings KCC Khariff",
+    "Purpose": "Soyabean",
+    "SocietyLoanNo": "TempLn001",
+    "AppliedDate": "01-04-2025",
+    "AppliedAmount": "25000",
+    "SanctionDate": "01-04-2025",
+    "SanctionAmount": "25000",
+    "RepaymentType": "Bullet Simple",
+    "RepaymentMode": "ClosingTime",
+    "ROI": "12",
+    "PenalROI": "6",
+    "IOAROI": "15",
+    "GestationPeriodMonths": "1",
+    "LoanPeriodMonths": "12"
+  }
+}
+

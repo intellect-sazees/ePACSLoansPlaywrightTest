@@ -1,0 +1,15 @@
+{
+  "Logincredantional": {
+    "url": "http://103.225.224.4:5000/",
+    "username": "Loans",
+    "password": "Root@345",
+    "loginDate": "01-04-2025"
+  },
+  "LandDeclarationPage": {
+    "AdmissionNo": "0100006",
+    "Product": "Normal KCC",
+    "Crop": "Sugar Cane Plant",
+    "Village": "1",
+    "SurveyNo": "1"
+  }
+}
