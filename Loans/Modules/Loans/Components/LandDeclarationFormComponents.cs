@@ -42,7 +42,10 @@ namespace ePACSLoans.Modules.Loans.Components
                 await FillCropAsync(landDeclarationData.Crop);
                 await FillVillageAsync(landDeclarationData.Village);
                 await FillSurveyNoAsync(landDeclarationData.SurveyNo);
-                await GetAvailableLandAcersAsync(datalocater);
+                var AvalAcers=await GetAvailableLandAcersAsync(datalocater);
+                var AvalCents=await GetAvailableLandCentsAsync(datalocater);
+                await FillDeclaredLandInAcersAsync(AvalAcers);
+                await FillDeclaredLandInCentsAsync(AvalCents);
                 //await FillSocietyLoanNoAsync(accountData.SocietyLoanNo);
                 //await FillAppliedDateAsync(accountData.AppliedDate);
                 //await FillAppliedAmountAsync(accountData.AppliedAmount);
@@ -104,11 +107,35 @@ namespace ePACSLoans.Modules.Loans.Components
         }
         private async Task<string> GetAvailableLandAcersAsync(LandDeclarationLocaters landDeclarationLocaters)
         {
-            string value;
             var a = Page.Locator(landDeclarationLocaters.TotalAvailableLandInAcersInput);
-            value = await _inputHelper.GetValueinTextBoxAsync(a);
+            var value = await _inputHelper.GetValueinTextBoxAsync(a);
             return value;
+        }
+        private async Task<string>GetAvailableLandCentsAsync(LandDeclarationLocaters landDeclarationLocaters)
+        {
+            var a = Page.Locator(landDeclarationLocaters.TotalAvailableLandInCentsInput);
+            var value = await _inputHelper.GetValueinTextBoxAsync(a);
+            return value;
+        }
+        private async Task FillDeclaredLandInAcersAsync(string diclandinacers)
+        {
+            var input = Page.Locator(_locators.LandDeclaredAcresInput);
+            var filled = await _inputHelper.FillTextBoxValueAsync(input, diclandinacers);
+            if (!filled)
+            {
+                throw new InvalidOperationException($"Failed to fill Land in acers: {diclandinacers}");
+            }
+            Logger.Debug($"Failed to fill Land in acers:{diclandinacers}");
+        }
+        private async Task FillDeclaredLandInCentsAsync(string diclandincents)
+        {
+            var input = Page.Locator(_locators.LandDeclaredCentsInput);
+            var filled = await _inputHelper.FillTextBoxValueAsync(input, diclandincents);
+            if (!filled)
+            {
+                throw new InvalidOperationException($"Failed to fill Land in cents: {diclandincents}");
+            }
+            Logger.Debug($"Failed to fill Land in cents:{diclandincents}");
         }
     }
 }
-
