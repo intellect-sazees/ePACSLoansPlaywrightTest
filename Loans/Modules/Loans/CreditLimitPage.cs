@@ -52,6 +52,7 @@ namespace ePACSLoans.Modules.Loans
             string actualMessage = (await modalBody.InnerTextAsync()).Trim();
             AssertHelper.AssertTextContains(actualMessage, "Data saved successfully", "Success Popup Message");
             await Page.Locator(_locators.OkbtnInput).ClickAsync();
+            await Page.Locator(_locators.CloseTaskPopup).ClickAsync();
             await dashboardPage.NavigateToDashboardAsync();
         }
         private async Task NavigateToCreditLimitAsync(DashboardPage dashboardPage)

@@ -22,10 +22,10 @@ namespace ePACSLoans.Utilities.Helpers
             ClassicAssert.AreEqual(expected, actual, $"Text in '{elementName}' does not match expected value.");
         }
 
-        public static void AssertTextContains(string actual, string expectedSubstring, string elementName)
+        public static bool AssertTextContains(string actual, string expectedSubstring, string elementName)
         {
-            ClassicAssert.IsTrue(actual.Contains(expectedSubstring),
-                $"Text in '{elementName}' does not contain expected substring '{expectedSubstring}'. Actual: '{actual}'");
+            ClassicAssert.IsTrue(actual.Contains(expectedSubstring),$"Text in '{elementName}' does not contain expected substring '{expectedSubstring}'. Actual: '{actual}'");
+            return true;
         }
 
         public static void AssertUrlEquals(string actual, string expected)

@@ -38,7 +38,9 @@
     "LandValuePerAcre": "//input[@id='Item1_LandValuePerAcre']",
     "Save": "//button[@id='btnsavelanddetails']",
     "SavePopup": "(//div[@class='modal-body'])[11]",
-    "OkButton": "//button[@id='btnsuccessmessageok']"
+    "OkButton": "//button[@id='btnsuccessmessageok']",
+    "AmissionnoValidation": "//div[@class='sweet-alert showSweetAlert visible']/h2",
+    "Okbtn": "//button[@class='confirm']"
   },
   "CreditLimitPage": {
     "CreditLimitIcon": "(//li[@id='40010'])[2]",

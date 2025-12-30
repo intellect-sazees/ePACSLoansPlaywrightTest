@@ -53,7 +53,7 @@ namespace ePACSLoans.Modules.Loans.Components
                 throw;
             }
         }
-        private async Task FillAdmissionNoAsync(string admissionNo)
+        public async Task FillAdmissionNoAsync(string admissionNo)
         {
             var input = Page.Locator(_locators.AdmissionNoInput);
             var filled = await _inputHelper.FillTextBoxValueAsync(input, admissionNo);
@@ -63,47 +63,47 @@ namespace ePACSLoans.Modules.Loans.Components
             }
             Logger.Debug($"Filled Admission No: {admissionNo}");
         }
-        private async Task ClickSearchBtn()
+        public async Task ClickSearchBtn()
         {
             await Page.ClickAsync(_locators.Searchbtn);
         }
-        private async Task ClickAddAsync()
+        public async Task ClickAddAsync()
         {
             await Page.ClickAsync(_locators.AddBtn);
         }
-        private async Task FillProductAsync(string product)
+        public async Task FillProductAsync(string product)
         {
             await _inputHelper.SelectDropdownOptionAsync(Page.Locator(_locators.ProductInput), product, SelectBy.Label);
             Logger.Debug($"Selected product: {product}");
         }
-        private async Task FillCropAsync(string crop)
+        public async Task FillCropAsync(string crop)
         {
             await _inputHelper.SelectDropdownOptionAsync(Page.Locator(_locators.CropInput), crop, SelectBy.Label);
             Logger.Debug($"Selected Crop: {crop}");
         }
-        private async Task FillVillageAsync(string village)
+        public async Task FillVillageAsync(string village)
         {
             await _inputHelper.SelectDropdownOptionAsync(Page.Locator(_locators.VillageInput), village, SelectBy.Index);
             Logger.Debug($"Selected Village: {village}");
         }
-        private async Task FillSurveyNoAsync(string surveyno)
+        public async Task FillSurveyNoAsync(string surveyno)
         {
             await _inputHelper.SelectDropdownOptionAsync(Page.Locator(_locators.SurveyNoInput), surveyno, SelectBy.Index);
             Logger.Debug($"Survey no: {surveyno}");
         }
-        private async Task<string> GetAvailableLandAcersAsync(LandDeclarationLocaters landDeclarationLocaters)
+        public async Task<string> GetAvailableLandAcersAsync(LandDeclarationLocaters landDeclarationLocaters)
         {
             var a = Page.Locator(landDeclarationLocaters.TotalAvailableLandInAcersInput);
             var value = await _inputHelper.GetValueinTextBoxAsync(a);
             return value;
         }
-        private async Task<string>GetAvailableLandCentsAsync(LandDeclarationLocaters landDeclarationLocaters)
+        public async Task<string>GetAvailableLandCentsAsync(LandDeclarationLocaters landDeclarationLocaters)
         {
             var a = Page.Locator(landDeclarationLocaters.TotalAvailableLandInCentsInput);
             var value = await _inputHelper.GetValueinTextBoxAsync(a);
             return value;
         }
-        private async Task FillDeclaredLandInAcersAsync(string diclandinacers)
+        public async Task FillDeclaredLandInAcersAsync(string diclandinacers)
         {
             var input = Page.Locator(_locators.LandDeclaredAcresInput);
             var filled = await _inputHelper.FillTextBoxValueAsync(input, diclandinacers);
@@ -113,7 +113,7 @@ namespace ePACSLoans.Modules.Loans.Components
             }
             Logger.Debug($"Failed to fill Land in acers:{diclandinacers}");
         }
-        private async Task FillDeclaredLandInCentsAsync(string diclandincents)
+        public async Task FillDeclaredLandInCentsAsync(string diclandincents)
         {
             var input = Page.Locator(_locators.LandDeclaredCentsInput);
             var filled = await _inputHelper.FillTextBoxValueAsync(input, diclandincents);
@@ -123,7 +123,7 @@ namespace ePACSLoans.Modules.Loans.Components
             }
             Logger.Debug($"Failed to fill Land in cents:{diclandincents}");
         }
-        private async Task FillLandValuePerAcerAsync(string landvalueperacer)
+        public async Task FillLandValuePerAcerAsync(string landvalueperacer)
         {
             var input = Page.Locator(_locators.LandValuePerAcreInput);
             var filled = await _inputHelper.FillTextBoxValueAsync(input, landvalueperacer);
@@ -133,9 +133,13 @@ namespace ePACSLoans.Modules.Loans.Components
             }
             Logger.Debug($"Filled landvalue per acer: {landvalueperacer}");
         }
-        private async Task ClickSaveAsync()
+        public async Task ClickSaveAsync()
         {
             await Page.Locator(_locators.SaveBtn).ClickAsync();
+        }
+        public async Task OkAltAsync()
+        {
+            await Page.Locator(_locators.OKAlt).ClickAsync();
         }
     }
 }

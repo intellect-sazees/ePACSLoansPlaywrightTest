@@ -46,6 +46,8 @@ namespace ePACSLoans.Modules.Loans
                 nameof(LandDeclarationLocaters.SaveBtn)=> "Save",
                 nameof(LandDeclarationLocaters.Savepopup)=> "SavePopup",
                 nameof(LandDeclarationLocaters.Okbtn)=> "OkButton",
+                nameof(LandDeclarationLocaters.AdnissionValidationAlert)=> "AmissionnoValidation",
+                nameof(LandDeclarationLocaters.OKAlt)=> "Okbtn",
                 _ => propertyName // Default: use property name as-is
             };
         }
@@ -59,6 +61,23 @@ namespace ePACSLoans.Modules.Loans
             AssertHelper.AssertTextContains(actualMessage,"Data saved successfully","Success Popup Message");
             await Page.Locator(_locators.Okbtn).ClickAsync();
             await dashboardPage.NavigateToDashboardAsync();
+        }
+        public async Task AdmissionNoValidationAsync(DashboardPage dashboardPage, LandDeclarationData data)
+        {
+            await NavigateToLandDeclarationAsync(dashboardPage);
+            string custno = data.AdmissionNo;
+            custno = "1234567";
+            await _formComponent.FillAdmissionNoAsync(custno);
+            await _formComponent.ClickSearchBtn();
+            string actualAlert=await Page.Locator(_locators.AdnissionValidationAlert).InnerTextAsync();
+            bool isPass=AssertHelper.AssertTextContains(actualAlert, "Admission Number Does Not Exist", "Validation Popup Message");
+            if (!isPass)
+            {
+                await TakeScreenshotAsync("ValidationFaild");
+            }
+            await _formComponent.OkAltAsync();
+            await dashboardPage.NavigateToDashboardAsync();
+            await dashboardPage.HandleDashboardAlertAsync();
         }
         private async Task NavigateToLandDeclarationAsync(DashboardPage dashboardPage)
         {
