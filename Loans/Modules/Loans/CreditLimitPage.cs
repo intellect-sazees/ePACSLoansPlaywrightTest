@@ -39,13 +39,14 @@ namespace ePACSLoans.Modules.Loans
                 nameof(CreditLimitLocators.SaveBtn)=> "SaveBtn",
                 nameof(CreditLimitLocators.SaveAlertinput)=> "SavePopup",
                 nameof(CreditLimitLocators.OkbtnInput)=> "OkButton",
+                nameof(CreditLimitLocators.CloseTaskPopup)=> "CloseTaskPopu",
                 _ => propertyName // Default: use property name as-is
             };
         }
-        public async Task SaveCreditlimitAsync(DashboardPage dashboardPage, CreditLimitData data,CreditLimitLocators locators)
+        public async Task SaveCreditlimitAsync(DashboardPage dashboardPage, CreditLimitData data)
         {
             await NavigateToCreditLimitAsync(dashboardPage);
-            await _formComponent.FillAsync(data, locators);
+            await _formComponent.FillAsync(data, _locators);
             var modalBody = Page.Locator(_locators.SaveAlertinput);
             await modalBody.WaitForAsync(new LocatorWaitForOptions { State = WaitForSelectorState.Visible, Timeout = 10000 });
             string actualMessage = (await modalBody.InnerTextAsync()).Trim();

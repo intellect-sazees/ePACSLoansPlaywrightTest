@@ -59,5 +59,6 @@ namespace ePACSLoans.Modules.Loans.Components
         {
             await Page.Locator(_locators.SelectInput).ClickAsync();
         }
+
     }
 }

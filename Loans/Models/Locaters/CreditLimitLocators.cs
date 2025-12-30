@@ -16,5 +16,6 @@ namespace ePACSLoans.Models.Locaters
         public string SaveBtn { get; set; } = string.Empty;
         public string SaveAlertinput { get; set; } = string.Empty;
         public string OkbtnInput { get; set; } = string.Empty;
+        public string CloseTaskPopup {  get; set; } = string.Empty;
     }
 }

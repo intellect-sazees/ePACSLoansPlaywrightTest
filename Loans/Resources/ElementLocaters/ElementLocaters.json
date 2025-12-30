@@ -48,6 +48,7 @@
     "SelectRecord": "//tr[@class='dirtedrecords']/td/input[2]",
     "SaveBtn": "//button[@id='btnsave']",
     "SavePopup": "(//div[@class='modal-body'])[5]",
-    "OkButton": "//button[@id='btnsuccessmessageok']"
+    "OkButton": "//button[@id='btnsuccessmessageok']",
+    "CloseTaskPopu": "(//button[text()='×'])[1]"
   }
 }
