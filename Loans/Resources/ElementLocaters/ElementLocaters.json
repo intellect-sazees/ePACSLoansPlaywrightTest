@@ -41,6 +41,13 @@
     "OkButton": "//button[@id='btnsuccessmessageok']"
   },
   "CreditLimitPage": {
-
+    "CreditLimitIcon": "(//li[@id='40010'])[2]",
+    "Village": "//select[@id='Item1_VillagePkey']",
+    "Product": "//select[@id='Item1_Product']",
+    "ViewBtn": "//input[@id='btnSave']",
+    "SelectRecord": "//tr[@class='dirtedrecords']/td/input[2]",
+    "SaveBtn": "//button[@id='btnsave']",
+    "SavePopup": "(//div[@class='modal-body'])[5]",
+    "OkButton": "//button[@id='btnsuccessmessageok']"
   }
 }

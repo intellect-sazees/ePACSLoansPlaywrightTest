@@ -29,6 +29,10 @@ namespace ePACSLoans.Modules.Loans.Components
             try
             {
                 Logger.Info("Starting to fill Credit Limit form");
+                await FillVillageAsync(creditlimitData.Village);
+                await FillProductAsync(creditlimitData.Product);
+                await ClickViewBtnAsync();
+                await SelectRecordAsync();
                 Logger.Info("Credit Limit form filled successfully");
             }
             catch (Exception ex)
@@ -36,6 +40,24 @@ namespace ePACSLoans.Modules.Loans.Components
                 Logger.Error($"Failed to fill Credit limit form :{ex}");
                 throw;
             }
+        }
+        private async Task FillVillageAsync(string village)
+        {
+            await _inputHelper.SelectDropdownOptionAsync(Page.Locator(_locators.VillageInput), village,SelectBy.Label);
+            Logger.Debug($"Selected Village: {village}");
+        }
+        private async Task FillProductAsync(string product)
+        {
+            await _inputHelper.SelectDropdownOptionAsync(Page.Locator(_locators.ProductInput), product, SelectBy.Label);
+            Logger.Debug($"Product {product}");
+        }
+        private async Task ClickViewBtnAsync()
+        {
+            await Page.Locator(_locators.ViewBtnInput).ClickAsync();
+        }
+        private async Task SelectRecordAsync()
+        {
+            await Page.Locator(_locators.SelectInput).ClickAsync();
         }
     }
 }

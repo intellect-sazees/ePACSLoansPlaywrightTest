@@ -88,12 +88,8 @@ namespace ePACSLoans.Tests.SmokeTest
                 var get = (string key) => legacyReader.GetData(testDataPath, "CreditLimitPage", key);
                 CreditLimitData obj = new CreditLimitData()
                 {
-                    //AdmissionNo = get("AdmissionNo"),
-                    //Product = get("Product"),
-                    //Crop = get("Crop"),
-                    //Village = get("Village"),
-                    //SurveyNo = get("SurveyNo"),
-                    //LandValuePerAcer = get("LandvaluePerAcer"),
+                    Village = get("AdmissionNo"),
+                    Product = get("Product"),
                 };
                 return obj;
             }

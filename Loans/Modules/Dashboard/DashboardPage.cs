@@ -55,7 +55,6 @@ namespace ePACSLoans.Modules.Dashboard
                     Logger.Warn("Page did not load completely");
                     return;
                 }
-
                 var isAlertVisible = await WaitHelper.WaitForElementVisibleAsync(_locators.PacsInfoConfigAlert, 3000);
                 if (isAlertVisible)
                 {

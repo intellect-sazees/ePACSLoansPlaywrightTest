@@ -8,5 +8,7 @@ namespace ePACSLoans.Models.Data
 {
     public class CreditLimitData
     {
+        public string Village { get; set; } = string.Empty;
+        public string Product { get; set; } = string.Empty;
     }
 }
