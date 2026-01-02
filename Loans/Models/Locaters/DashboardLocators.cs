@@ -17,5 +17,6 @@ namespace ePACSLoans.Models.Locaters
         public string BorrowingsIcon { get; set; } = string.Empty;
         public string MembershipIcon { get; set; } = string.Empty;
         public string LoansIcon { get; set; } = string.Empty;
+        public string ConfigurationMenu { get; set; } = string.Empty;
     }
 }

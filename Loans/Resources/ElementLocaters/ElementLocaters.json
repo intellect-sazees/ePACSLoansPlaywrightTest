@@ -16,7 +16,8 @@
     "nabardLogo": "//div[@class='logo-con']",
     "borrowingsIcon": "//a[@id='20']",
     "membershipIcon": "//a[@id='1']",
-    "loansIcon": "//a[@id='3']"
+    "loansIcon": "//a[@id='3']",
+    "ConfigurationMenu": "(//a[@class='configuration hdr-nav-btn dropdown-toggle'])[2]"
   },
   "LandDeclarationPage": {
     "LandDeclarationIcon": "//li[@class='wf-40087']",

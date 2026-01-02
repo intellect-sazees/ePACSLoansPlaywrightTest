@@ -36,6 +36,7 @@ namespace ePACSLoans.Modules.Dashboard
                 nameof(DashboardLocators.BorrowingsIcon) => "borrowingsIcon",
                 nameof(DashboardLocators.MembershipIcon)=> "membershipIcon",
                 nameof(DashboardLocators.LoansIcon)=> "loansIcon",
+                nameof(DashboardLocators.ConfigurationMenu)=> "ConfigurationMenu",
                 _ => propertyName // Default: use property name as-is
             };
         }
@@ -219,6 +220,18 @@ namespace ePACSLoans.Modules.Dashboard
                 Logger.Error("Failed to navigate to Loans module", ex);
                 await TakeScreenshotAsync("navigate_membership_failure");
                 throw;
+            }
+        }
+        public async Task ClickConfigurationMenuAsync()
+        {
+            try
+            {
+                await ClickAsync(_locators.ConfigurationMenu);
+                Logger.Debug($"Click Configuration Menu");
+            }
+            catch (Exception ex)
+            {
+                Logger.Error($"{ex.Message}");
             }
         }
 
