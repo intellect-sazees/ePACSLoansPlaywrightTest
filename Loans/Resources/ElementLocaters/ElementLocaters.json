@@ -40,7 +40,7 @@
     "SavePopup": "(//div[@class='modal-body'])[11]",
     "OkButton": "//button[@id='btnsuccessmessageok']",
     "AmissionnoValidation": "//div[@class='sweet-alert showSweetAlert visible']/h2",
-    "": "//div[@class='sweet-alert showSweetAlert visible']/h2",
+    "AvailableLandValidation": "//div[@class='sweet-alert showSweetAlert visible']/h2",
     "Okbtn": "//button[@class='confirm']"
   },
   "CreditLimitPage": {

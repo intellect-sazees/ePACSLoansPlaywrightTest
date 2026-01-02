@@ -29,6 +29,7 @@ namespace ePACSLoans.Models.Locaters
         public string Savepopup { get; set; } = string.Empty;
         public string Okbtn { get; set; } = string.Empty;
         public string AdnissionValidationAlert {  get; set; } = string.Empty;
+        public string AvailableLandValidation {  get; set; } = string.Empty;
         public string OKAlt { get; set; } = string.Empty;
     }
 }

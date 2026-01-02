@@ -47,6 +47,7 @@ namespace ePACSLoans.Modules.Loans
                 nameof(LandDeclarationLocaters.Savepopup)=> "SavePopup",
                 nameof(LandDeclarationLocaters.Okbtn)=> "OkButton",
                 nameof(LandDeclarationLocaters.AdnissionValidationAlert)=> "AmissionnoValidation",
+                nameof(LandDeclarationLocaters.AvailableLandValidation)=> "AvailableLandValidation",
                 nameof(LandDeclarationLocaters.OKAlt)=> "Okbtn",
                 _ => propertyName // Default: use property name as-is
             };
