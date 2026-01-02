@@ -111,10 +111,10 @@ namespace ePACSLoans.Tests.Functional_Test
             await _landDeclarationPage.AdmissionNoValidationAsync(_dashboardPage!, _testData!);
         }
         [Test]
-        [Description("")]
-        public async Task TestLandValidationAsync()
+        [Description("Validates that available land is correctly calculated and returned")]
+        public async Task TestAvailableLandValidationAsync()
         {
-            
+            await _landDeclarationPage.ValidateAvailableLandAsync(_dashboardPage, _testData!);
         }
     }
 }

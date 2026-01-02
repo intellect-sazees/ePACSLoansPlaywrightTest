@@ -79,6 +79,29 @@ namespace ePACSLoans.Modules.Loans
             await dashboardPage.NavigateToDashboardAsync();
             await dashboardPage.HandleDashboardAlertAsync();
         }
+        public async Task ValidateAvailableLandAsync(DashboardPage dashboardPage, LandDeclarationData data)
+        {
+            await NavigateToLandDeclarationAsync(dashboardPage);
+            await _formComponent.FillAdmissionNoAsync(data.AdmissionNo);
+            await _formComponent.ClickSearchBtn();
+            await _formComponent.ClickAddAsync();
+            await _formComponent.FillProductAsync(data.Product);
+            await _formComponent.FillCropAsync(data.Crop);
+            await _formComponent.FillVillageAsync(data.Village);
+            await _formComponent.FillSurveyNoAsync(data.SurveyNo);
+            string s=await _formComponent.GetAvailableLandAcersAsync(_locators);
+            int i = Convert.ToInt32(s);
+            i = i +1;
+            string Acers=i.ToString();
+            string a = await _formComponent.GetAvailableLandCentsAsync(_locators);
+            int j=Convert.ToInt32(a);
+            j = j +1;
+            string Cents=j.ToString();
+            await _formComponent.FillDeclaredLandInAcersAsync(Acers);
+            await _formComponent.FillDeclaredLandInCentsAsync(Cents);
+            string actualAlert = await Page.Locator("//div[@class='sweet-alert showSweetAlert visible']/h2").InnerTextAsync();
+            bool isPass = AssertHelper.AssertTextContains(actualAlert, "Declared Land value should not be greater than Available LandAvailable Land", "Validation Popup Message");
+        }
         private async Task NavigateToLandDeclarationAsync(DashboardPage dashboardPage)
         {
             try
