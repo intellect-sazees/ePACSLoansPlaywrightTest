@@ -101,6 +101,13 @@ namespace ePACSLoans.Modules.Loans
             await _formComponent.FillDeclaredLandInCentsAsync(Cents);
             string actualAlert = await Page.Locator("//div[@class='sweet-alert showSweetAlert visible']/h2").InnerTextAsync();
             bool isPass = AssertHelper.AssertTextContains(actualAlert, "Declared Land value should not be greater than Available LandAvailable Land", "Validation Popup Message");
+            if (!isPass)
+            {
+                await TakeScreenshotAsync("ValidationFaild");
+            }
+            await _formComponent.OkAltAsync();
+            await dashboardPage.NavigateToDashboardAsync();
+            await dashboardPage.HandleDashboardAlertAsync();
         }
         private async Task NavigateToLandDeclarationAsync(DashboardPage dashboardPage)
         {
